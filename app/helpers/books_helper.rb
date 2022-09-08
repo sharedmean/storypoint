@@ -3,7 +3,7 @@
 # books helper
 module BooksHelper
   def authors_for_select
-    Author.all.collect { |author| [author.first_name, author.id] }
+    Author.all.collect { |author| [author_fullanme(author), author.id] }
   end
 
   def positions_for_select
