@@ -1,40 +1,51 @@
 <div class="container"> 
-  <div class="d-flex">
-    <h1 class="mb-3 mt-5" style="margin: 0 auto; padding: 20px">
-      All authors  
-      <%= link_to new_author_path(@author), class: "btn btn-outline-primary btn-md" do %>
-        <i class="bi-plus-lg" ></i>  
-      <% end %>
-    </h1> 
-  </div> 
-  <div class="d-flex justify-content-between align-items-center" style="margin: 0 auto; padding: 20px"> 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Year of birth</th>
-          <th scope="col">Edit author</th>
-          <th scope="col">Delete author</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @authors.each do |author| %>
-          <tr>
-            <td> <%= link_to author_fullanme(author), author_path(author), { :class => 'text-decoration-none text-primary' } %>  </td>
-            <td> <%= author.year_of_birth %> </td>
-            <td> 
-              <%= link_to edit_author_path(author), class: "btn btn-md" do %>
-                <i class="bi-pen" ></i>  
-              <% end %>
-            </td>
-            <td> 
-              <%= link_to author_path(author), method: :delete, data: {confirm: "Delete author?"}, class: "btn btn-md" do %>
-                <i class="bi-trash" ></i>  
-              <% end %>
-            </td>
-          </tr>
+  <% if @authors.empty? %>
+    <div class="d-flex">
+      <h1 class="mb-3 mt-5" style="margin: 0 auto; padding: 20px">
+        Add the first author 
+        <%= link_to new_author_path(@author), class: "btn btn-outline-primary btn-md" do %>
+          <i class="bi-plus-lg" ></i>  
         <% end %>
-      </tbody
-    </table>
-  </div>
+      </h1> 
+    </div> 
+  <% else %>
+    <div class="d-flex">
+      <h1 class="mb-3 mt-5" style="margin: 0 auto; padding: 20px">
+        All authors  
+        <%= link_to new_author_path(@author), class: "btn btn-outline-primary btn-md" do %>
+          <i class="bi-plus-lg" ></i>  
+        <% end %>
+      </h1> 
+    </div> 
+    <div class="d-flex justify-content-between align-items-center" style="margin: 0 auto; padding: 20px"> 
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Year of birth</th>
+            <th scope="col">Edit author</th>
+            <th scope="col">Delete author</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @authors.each do |author| %>
+            <tr>
+              <td> <%= link_to author_fullanme(author), author_path(author), { :class => 'text-decoration-none text-primary' } %>  </td>
+              <td> <%= author.year_of_birth %> </td>
+              <td> 
+                <%= link_to edit_author_path(author), class: "btn btn-md" do %>
+                  <i class="bi-pen" ></i>  
+                <% end %>
+              </td>
+              <td> 
+                <%= link_to author_path(author), method: :delete, data: {confirm: "Delete author?"}, class: "btn btn-md" do %>
+                  <i class="bi-trash" ></i>  
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody
+      </table>
+    </div>
+  <% end %>
 </div>

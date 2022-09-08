@@ -6,4 +6,7 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :genres
 
   validates_uniqueness_of :position
+  validates :title, presence: true
+  validates :year_of_release, presence: true
+  validates :description, presence: true
 end

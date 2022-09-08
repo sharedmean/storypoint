@@ -14,11 +14,11 @@
     </div>
     <div class="mb-3">
       <%= form.label :year_of_birth, class: "form-label" %>
-      <%= form.text_field :year_of_birth, class: "form-control" %>
+      <%= form.text_field :year_of_birth, required: true, class: "form-control" %>
     </div>
     <div class="mb-3">
       <%= form.label :biography, class: "form-label" %>
-      <%= form.text_area :biography, class: "form-control" %>
+      <%= form.text_area :biography, required: true, class: "form-control" %>
     </div>
 
     <div>
