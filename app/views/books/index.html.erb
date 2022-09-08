@@ -1,0 +1,46 @@
+<div class="container"> 
+  <div class="d-flex">
+    <h1 class="mb-3 mt-5" style="margin: 0 auto; padding: 20px">
+      All books  
+      <%= link_to new_book_path(@book), class: "btn btn-outline-primary btn-md" do %>
+        <i class="bi-plus-lg" ></i>  
+      <% end %>
+    </h1> 
+  </div>
+  <div class="d-flex justify-content-between align-items-center" style="margin: 0 auto; padding: 20px"> 
+    <% @positions.each do |pos| %>
+      <% if pos.book == nil %>
+      <div class="card border-secondary mb-3" style="width: 17rem; height: 12rem">
+        <div class="card-header"></div>
+        <div class="card-body text-secondary">
+          <h5 class="card-title">Empty shelf</h5>
+        </div>
+      </div>
+      <% else %>
+        <div class="card border-primary mb-3" style="width: 17rem; height: 12rem">
+          <div class="card-header"> 
+            <%= link_to author_fullanme(pos.book.author), author_path(pos.book.author), { :class => 'text-decoration-none text-primary' }%> 
+            <%= link_to edit_book_path(pos.book), class: "btn btn-sm" do %>
+              <i class="bi-pen" ></i>  
+            <% end %>
+            <%= link_to book_path(pos.book), method: :delete, data: {confirm: "Delete book?"}, class: "btn btn-sm" do %>
+              <i class="bi-trash" ></i>  
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"> <%= link_to pos.book.title, book_path(pos.book), { :class => 'text-decoration-none text-dark' }%> </h5>
+          </div>
+          <div class="card-body">
+            <% pos.book.genres.each do |genre| %> 
+              <b class="border border-primary rounded p-1 m-1"> <%= genre.name %> </b>
+            <% end %> 
+          </div>   
+        </div>
+      <% end %>
+      <% if pos.position == Position::MAX_POSITION %>
+        </div>
+        <div class="d-flex justify-content-between align-items-center" style="margin: 0 auto; padding: 20px"> 
+      <% end %>
+    <% end %>
+  </div>
+</div>

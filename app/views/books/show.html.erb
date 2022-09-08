@@ -1,0 +1,10 @@
+<div class="card border-primary mb-3 mt-5 w-25" style="margin:0 auto">
+  <div class="card-header"> 
+    <%= link_to author_fullanme(@book.author), author_path(@book.author), { :class => 'text-decoration-none text-primary' }%> 
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <%= @book.title %> </h5>
+    <p class="card-text"> Published in <b> <%= @book.year_of_release %> </b> </p>
+    <p class="card-text"> <%= @book.description %> </p>
+  </div>
+</div> 
