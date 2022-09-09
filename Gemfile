@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'rails_admin', '~> 3.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'simplecov', require: false, group: :test
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -43,6 +44,9 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
   gem 'spring'
 end
 
@@ -51,6 +55,9 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
   gem 'webdrivers'
 end
 
